@@ -10,11 +10,24 @@ public class ShoppingCartPage extends PageObject{
         super(driver);
     }
 
+    //*********Page Variables*********
+    //private String dynamicValue = "dynamic";
+
     //*********Locators*********
     private String proceedToCheckOutBtnByXPath = ".//*[@id='center_column']//a[contains(@title, 'checkout')]";
+    private String qtyValueByXPtah= ".//*[@class='cart_quantity text-center']//input[2]";
+    private String itemNameValueByXPtah= ".//*[@class='cart_description']/p[@class='product-name']/a";
 
     public AuthenticationPage clickCheckOut() {
-        helperDriver.clickElement(By.xpath(proceedToCheckOutBtnByXPath),5);
+        driverHelper.clickElement(By.xpath(proceedToCheckOutBtnByXPath),5);
         return new AuthenticationPage(driver);
+    }
+
+    public String getItemName() {
+        return driverHelper.findElementBy(By.xpath(itemNameValueByXPtah),2).getText();
+    }
+
+    public String getQuintity() {
+        return driverHelper.findElementBy(By.xpath(qtyValueByXPtah),3).getAttribute("value");
     }
 }

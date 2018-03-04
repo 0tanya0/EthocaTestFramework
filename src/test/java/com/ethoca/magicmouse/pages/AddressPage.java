@@ -11,10 +11,15 @@ public class AddressPage extends PageObject {
 
     //*********Locators*********
     private String proceedToCheckOutBtnByName = "processAddress";
+    private String accountValueByXPtah= ".//*[@class='account']/span";
 
 
     public ShippingPage clickCheckOut() {
-        helperDriver.clickElement(By.name(proceedToCheckOutBtnByName),5);
+        driverHelper.clickElement(By.name(proceedToCheckOutBtnByName),5);
         return new ShippingPage(driver);
+    }
+
+    public String getAccountName() {
+        return driverHelper.findElementBy(By.xpath(accountValueByXPtah),2).getText();
     }
 }

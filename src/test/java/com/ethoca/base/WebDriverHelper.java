@@ -7,17 +7,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class HelperWebDriver {
+public class WebDriverHelper {
     private final WebDriver driver;
 
-    public HelperWebDriver(WebDriver driver) {
+    public WebDriverHelper(WebDriver driver) {
         this.driver = driver;
-    }
-
-    public WebElement waitUntilElementVisible(By locator, int timeSec){
-        WebDriverWait wait = new WebDriverWait(driver, timeSec);
-        return wait.until(
-                ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public WebElement findElementBy (By locator, int timeSec){

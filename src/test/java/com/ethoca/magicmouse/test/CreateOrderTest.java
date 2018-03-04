@@ -21,23 +21,26 @@ public class CreateOrderTest extends BaseTest {
     protected void test(WebDriver driver) {
 
         HomePage homePage = new HomePage(driver);
-        SearchPage searchPage = homePage.searchItem("blouse");
-        assertThat(searchPage.isItemFound("Blouse"))
+
+        String itemName = "Blouse";
+        String quantity = "1";
+        SearchPage searchPage = homePage.searchItem(itemName);
+        assertThat(searchPage.isItemFound(itemName))
                 .isTrue();
 
         ShoppingDetailsPage shoppingDetailsPage = searchPage.addToCart();
-        //assert
 
         ShoppingCartPage shoppingCartPage = shoppingDetailsPage.clickCheckOut();
-        //assert
+        assertThat(shoppingCartPage.getItemName())
+                .isEqualTo(itemName);
+        assertThat(shoppingCartPage.getQuintity())
+                .isEqualTo(quantity);
 
         AuthenticationPage authenticationPage = shoppingCartPage.clickCheckOut();
-        //assert
 
         String randomEmail = StringUtils.generateRandomEmail();
         CreateAccountPage createAccountPage = authenticationPage.inputEmail(randomEmail)
                 .clickCreateAccount();
-        //assert
 
         PersonalInformation personalInformation = new PersonalInformation("Vasya", "Pupkin", "Tanya123!", "416993996");
         Address address = new Address("30 Test", "Toronto", "Colorado", "11223", "United States");
@@ -45,10 +48,10 @@ public class CreateOrderTest extends BaseTest {
         AddressPage addressPage = createAccountPage.inputPersonalInformation(personalInformation)
                 .inputAddress(address)
                 .clickRegister();
-        //assert
 
         ShippingPage shippingPage = addressPage.clickCheckOut();
-        //assert
+        assertThat(addressPage.getAccountName())
+                .isEqualTo(personalInformation.getFirstname()+" "+personalInformation.getLastname());
 
         PaymentPage paymentPage = shippingPage.checkAgreeTerms().clickCheckOut();
 
@@ -56,7 +59,11 @@ public class CreateOrderTest extends BaseTest {
 
         OrderConfirmationPage orderConfirmationPage = bankWirePaymentPage.clickConfirmOrder();
 
-//        assertThat(bankWirePaymentPage.isOrderCrerated())
-//                .isTrue();
+        assertThat(orderConfirmationPage.getPageName())
+                .isEqualTo("Order confirmation");
+
+        assertThat(orderConfirmationPage.getStatusOfOrder())
+                .isEqualTo("Your order on My Store is complete.");
+
     }
 }

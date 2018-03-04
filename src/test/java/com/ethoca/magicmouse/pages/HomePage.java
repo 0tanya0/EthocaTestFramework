@@ -23,8 +23,8 @@ public class HomePage extends PageObject{
 
     public SearchPage searchItem(String itemName) {
 
-        helperDriver.inputText(By.id(searchFieldById),itemName);
-        helperDriver.clickElement(By.name(searchBtnByName),5);
+        driverHelper.inputText(By.id(searchFieldById),itemName);
+        driverHelper.clickElement(By.name(searchBtnByName),5);
         return new SearchPage(driver, itemName);
     }
 

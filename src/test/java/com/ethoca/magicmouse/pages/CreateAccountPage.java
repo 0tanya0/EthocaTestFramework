@@ -32,26 +32,26 @@ public class CreateAccountPage extends PageObject {
 
     public CreateAccountPage inputPersonalInformation(PersonalInformation personalInformation) {
 
-        helperDriver.inputText(By.id(firstnameFieldById), personalInformation.getFirstname());
-        helperDriver.inputText(By.id(lastnameFieldById), personalInformation.getLastname());
-        helperDriver.inputText(By.id(passFieldById), personalInformation.getPassword());
-        helperDriver.inputText(By.id(phoneFieldById), personalInformation.getPhoneNumber());
+        driverHelper.inputText(By.id(firstnameFieldById), personalInformation.getFirstname());
+        driverHelper.inputText(By.id(lastnameFieldById), personalInformation.getLastname());
+        driverHelper.inputText(By.id(passFieldById), personalInformation.getPassword());
+        driverHelper.inputText(By.id(phoneFieldById), personalInformation.getPhoneNumber());
 
         return this;
     }
 
     public CreateAccountPage inputAddress(Address address) {
-        helperDriver.inputText(By.id(addressLineFieldById), address.getAddressLine());
-        helperDriver.inputText(By.id(cityFieldById), address.getCity());
-        helperDriver.selectDropDownList(By.id(stateFieldById), address.getState());
-        helperDriver.inputText(By.id(codeFieldById), address.getCode());
-        helperDriver.selectDropDownList(By.id(countryFieldById), address.getCountry());
+        driverHelper.inputText(By.id(addressLineFieldById), address.getAddressLine());
+        driverHelper.inputText(By.id(cityFieldById), address.getCity());
+        driverHelper.selectDropDownList(By.id(stateFieldById), address.getState());
+        driverHelper.inputText(By.id(codeFieldById), address.getCode());
+        driverHelper.selectDropDownList(By.id(countryFieldById), address.getCountry());
 
         return this;
     }
 
     public AddressPage clickRegister() {
-        helperDriver.clickElement(By.id(registerBtnById),2);
+        driverHelper.clickElement(By.id(registerBtnById),2);
 
         return new AddressPage(driver);
     }

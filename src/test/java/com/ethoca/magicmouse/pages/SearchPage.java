@@ -4,13 +4,7 @@ import com.ethoca.base.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.MoveMouseAction;
-import org.openqa.selenium.interactions.touch.MoveAction;
-import org.openqa.selenium.remote.RemoteWebElement;
-
-import javax.swing.plaf.basic.BasicInternalFrameTitlePane;
 
 public class SearchPage extends PageObject{
 
@@ -30,7 +24,7 @@ public class SearchPage extends PageObject{
 
 
     public ShoppingDetailsPage addToCart() {
-        WebElement productElement = helperDriver.findElementBy(By.cssSelector(productElementByCss),5);
+        WebElement productElement = driverHelper.findElementBy(By.cssSelector(productElementByCss),5);
         new Actions(driver).moveToElement(productElement).perform();
         WebElement addToCartBtn = productElement.findElement(By.cssSelector(addToCartBtnByCss));
         addToCartBtn.click();
@@ -38,7 +32,7 @@ public class SearchPage extends PageObject{
     }
 
      public boolean isItemFound(String itemName) {
-         helperDriver.findElementBy(By.xpath(itemByXPath.replaceFirst(dynamicValue,itemName)), 5);
+         driverHelper.findElementBy(By.xpath(itemByXPath.replaceFirst(dynamicValue,itemName)), 5);
          return true;
     }
 }

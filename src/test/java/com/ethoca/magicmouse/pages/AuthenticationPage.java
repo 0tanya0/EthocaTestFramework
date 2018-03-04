@@ -3,9 +3,6 @@ package com.ethoca.magicmouse.pages;
 import com.ethoca.base.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import java.util.Random;
 
 public class AuthenticationPage extends PageObject {
     public AuthenticationPage(WebDriver driver) {
@@ -22,14 +19,12 @@ public class AuthenticationPage extends PageObject {
 
 
     public AuthenticationPage inputEmail(String email) {
-        WebElement emailField = findElementBy(By.id(emailFieldById),5);
-        emailField.sendKeys(email);
+        inputText(By.id(emailFieldById),email);
         return this;
     }
 
-    public AddressPage clickCreateAccount() {
-        WebElement submitCreateBtn = findElementBy(By.id(submitCreateBtnById),5);
-        submitCreateBtn.click();
-        return new AddressPage(driver);
+    public CreateAccountPage clickCreateAccount() {
+        clickElement(By.id(submitCreateBtnById),2);
+        return new CreateAccountPage(driver);
     }
 }

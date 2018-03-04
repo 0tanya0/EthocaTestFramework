@@ -19,7 +19,7 @@ public class ShoppingDetailsPage extends PageObject{
 
 
     public ShoppingCartPage clickCheckOut() {
-        WebElement proceedToCheckOutBtn = clickElement(By.xpath(proceedToCheckOutBtnByXPath),5);
+        clickElement(By.xpath(proceedToCheckOutBtnByXPath),5);
         return new ShoppingCartPage(driver);
     }
 }

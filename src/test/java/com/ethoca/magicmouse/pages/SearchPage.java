@@ -37,20 +37,8 @@ public class SearchPage extends PageObject{
         return new ShoppingDetailsPage(driver);
     }
 
-
-
-    public SearchPage clickCheckOut() {
-        // TODO
-        return this;
-    }
-
-    public BillingDetailsPage clickContinue() {
-        // TODO
-        return new BillingDetailsPage(driver);
-    }
-
-    public boolean isItemFound(String itemName) {
-        WebElement expectedItemName = findElementBy(By.xpath(itemByXPath.replaceFirst(dynamicValue,itemName)), 5);
+     public boolean isItemFound(String itemName) {
+        findElementBy(By.xpath(itemByXPath.replaceFirst(dynamicValue,itemName)), 5);
         return true;
     }
 }

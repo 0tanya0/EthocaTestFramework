@@ -32,25 +32,27 @@ public abstract class PageObject {
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     };
 
-    protected WebElement clickElement(By locator, int timeSec) {
+    protected void clickElement(By locator, int timeSec) {
         WebElement element = findElementBy(locator,timeSec);
         element.click();
-        return element;
     }
 
-    //Click Method
-    public void click (By elementLocation) {
-        driver.findElement(elementLocation).click();
+    protected void selectDropDownList(By locator, String text) {
+        Select selectData = new Select(driver.findElement(locator));
+        selectData.selectByVisibleText(text);
     }
 
-    //Write Text
-    public void writeText (By elementLocation, String text) {
-        driver.findElement(elementLocation).sendKeys(text);
+    protected void inputText(By locator, String text) {
+        WebElement element = findElementBy(locator,2);
+        element.clear();
+        element.sendKeys(text);
     }
 
-    //Read Text
-    public String readText (By elementLocation) {
-        return driver.findElement(elementLocation).getText();
+    protected void selectCheckbox (By locator){
+        if (!driver.findElement(locator).isSelected())
+        {
+            driver.findElement(locator).click();
+        }
     }
 
 

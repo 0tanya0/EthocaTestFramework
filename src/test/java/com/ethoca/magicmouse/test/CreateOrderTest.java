@@ -3,6 +3,8 @@ package com.ethoca.magicmouse.test;
 
 import com.ethoca.base.BaseTest;
 import com.ethoca.base.StringUtils;
+import com.ethoca.magicmouse.model.Address;
+import com.ethoca.magicmouse.model.PersonalInformation;
 import com.ethoca.magicmouse.pages.*;
 import org.openqa.selenium.WebDriver;
 
@@ -33,14 +35,28 @@ public class CreateOrderTest extends BaseTest {
         //assert
 
         String randomEmail = StringUtils.generateRandomEmail();
-        AddressPage addressPage = authenticationPage.inputEmail(randomEmail)
+        CreateAccountPage createAccountPage = authenticationPage.inputEmail(randomEmail)
                 .clickCreateAccount();
         //assert
 
-//        TransactionResultsPage transactionResultsPage = billingDetailsPage.inputContactDetails("test@emai.com")
-//                .inputBillingDetails("Visa", "42424242424", 1224)
-//                .clickPurchase();
-//        assertThat(transactionResultsPage.isOrderCrerated())
+        PersonalInformation personalInformation = new PersonalInformation("Vasya", "Pupkin", "Tanya123!", "416993996");
+        Address address = new Address("30 Test", "Toronto", "Colorado", "11223", "United States");
+
+        AddressPage addressPage = createAccountPage.inputPersonalInformation(personalInformation)
+                .inputAddress(address)
+                .clickRegister();
+        //assert
+
+        ShippingPage shippingPage = addressPage.clickCheckOut();
+        //assert
+
+        PaymentPage paymentPage = shippingPage.checkAgreeTerms().clickCheckOut();
+
+        BankWirePaymentPage bankWirePaymentPage = paymentPage.selectPaymentMethod("wire");
+
+        OrderConfirmationPage orderConfirmationPage = bankWirePaymentPage.clickConfirmOrder();
+
+//        assertThat(bankWirePaymentPage.isOrderCrerated())
 //                .isTrue();
     }
 }

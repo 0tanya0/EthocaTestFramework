@@ -30,7 +30,7 @@ public class SearchPage extends PageObject{
 
 
     public ShoppingDetailsPage addToCart() {
-        WebElement productElement = findElementBy(By.cssSelector(productElementByCss),5);
+        WebElement productElement = helperDriver.findElementBy(By.cssSelector(productElementByCss),5);
         new Actions(driver).moveToElement(productElement).perform();
         WebElement addToCartBtn = productElement.findElement(By.cssSelector(addToCartBtnByCss));
         addToCartBtn.click();
@@ -38,7 +38,7 @@ public class SearchPage extends PageObject{
     }
 
      public boolean isItemFound(String itemName) {
-        findElementBy(By.xpath(itemByXPath.replaceFirst(dynamicValue,itemName)), 5);
-        return true;
+         helperDriver.findElementBy(By.xpath(itemByXPath.replaceFirst(dynamicValue,itemName)), 5);
+         return true;
     }
 }

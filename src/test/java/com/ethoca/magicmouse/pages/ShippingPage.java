@@ -14,12 +14,12 @@ public class ShippingPage extends PageObject {
     private String agreeTermsCheckBoxById = "cgv";
 
     public PaymentPage clickCheckOut() {
-        clickElement(By.name(proceedToCheckOutBtnByName),2);
+        helperDriver.clickElement(By.name(proceedToCheckOutBtnByName),2);
         return new PaymentPage(driver);
     }
 
     public ShippingPage checkAgreeTerms() {
-        selectCheckbox(By.id(agreeTermsCheckBoxById));
+        helperDriver.selectCheckbox(By.id(agreeTermsCheckBoxById));
         return this;
     }
 }

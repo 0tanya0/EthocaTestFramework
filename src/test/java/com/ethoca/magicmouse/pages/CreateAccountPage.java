@@ -32,26 +32,26 @@ public class CreateAccountPage extends PageObject {
 
     public CreateAccountPage inputPersonalInformation(PersonalInformation personalInformation) {
 
-        inputText(By.id(firstnameFieldById), personalInformation.getFirstname());
-        inputText(By.id(lastnameFieldById), personalInformation.getLastname());
-        inputText(By.id(passFieldById), personalInformation.getPassword());
-        inputText(By.id(phoneFieldById), personalInformation.getPhoneNumber());
+        helperDriver.inputText(By.id(firstnameFieldById), personalInformation.getFirstname());
+        helperDriver.inputText(By.id(lastnameFieldById), personalInformation.getLastname());
+        helperDriver.inputText(By.id(passFieldById), personalInformation.getPassword());
+        helperDriver.inputText(By.id(phoneFieldById), personalInformation.getPhoneNumber());
 
         return this;
     }
 
     public CreateAccountPage inputAddress(Address address) {
-        inputText(By.id(addressLineFieldById), address.getAddressLine());
-        inputText(By.id(cityFieldById), address.getCity());
-        selectDropDownList(By.id(stateFieldById), address.getState());
-        inputText(By.id(codeFieldById), address.getCode());
-        selectDropDownList(By.id(countryFieldById), address.getCountry());
+        helperDriver.inputText(By.id(addressLineFieldById), address.getAddressLine());
+        helperDriver.inputText(By.id(cityFieldById), address.getCity());
+        helperDriver.selectDropDownList(By.id(stateFieldById), address.getState());
+        helperDriver.inputText(By.id(codeFieldById), address.getCode());
+        helperDriver.selectDropDownList(By.id(countryFieldById), address.getCountry());
 
         return this;
     }
 
     public AddressPage clickRegister() {
-        clickElement(By.id(registerBtnById),2);
+        helperDriver.clickElement(By.id(registerBtnById),2);
 
         return new AddressPage(driver);
     }

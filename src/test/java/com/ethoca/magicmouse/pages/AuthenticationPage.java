@@ -19,12 +19,12 @@ public class AuthenticationPage extends PageObject {
 
 
     public AuthenticationPage inputEmail(String email) {
-        inputText(By.id(emailFieldById),email);
+        helperDriver.inputText(By.id(emailFieldById),email);
         return this;
     }
 
     public CreateAccountPage clickCreateAccount() {
-        clickElement(By.id(submitCreateBtnById),2);
+        helperDriver.clickElement(By.id(submitCreateBtnById),2);
         return new CreateAccountPage(driver);
     }
 }

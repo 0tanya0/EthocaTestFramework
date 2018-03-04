@@ -14,7 +14,7 @@ public class AddressPage extends PageObject {
 
 
     public ShippingPage clickCheckOut() {
-        clickElement(By.name(proceedToCheckOutBtnByName),5);
+        helperDriver.clickElement(By.name(proceedToCheckOutBtnByName),5);
         return new ShippingPage(driver);
     }
 }

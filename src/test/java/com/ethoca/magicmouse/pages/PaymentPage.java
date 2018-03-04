@@ -16,7 +16,7 @@ public class PaymentPage extends PageObject {
     private String bankWireBtnByXPath = ".//*[@id='HOOK_PAYMENT']//a[contains(@title, '"+dynamicValue+"')]";
 
     public BankWirePaymentPage selectPaymentMethod(String paymentMethod) {
-        clickElement(By.xpath(bankWireBtnByXPath.replaceFirst(dynamicValue,paymentMethod)),5);
+        helperDriver.clickElement(By.xpath(bankWireBtnByXPath.replaceFirst(dynamicValue,paymentMethod)),5);
         return new BankWirePaymentPage(driver);
     }
 }

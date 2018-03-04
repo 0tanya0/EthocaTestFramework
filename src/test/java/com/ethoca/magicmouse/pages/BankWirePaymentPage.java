@@ -13,7 +13,7 @@ public class BankWirePaymentPage extends PageObject {
     private String confirmOrderBtnByXpath = ".//*[@id='cart_navigation']/button";
 
     public OrderConfirmationPage clickConfirmOrder() {
-        clickElement(By.xpath(confirmOrderBtnByXpath),5);
+        helperDriver.clickElement(By.xpath(confirmOrderBtnByXpath),5);
 
         return new OrderConfirmationPage(driver);
     }

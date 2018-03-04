@@ -14,7 +14,7 @@ public class ShoppingCartPage extends PageObject{
     private String proceedToCheckOutBtnByXPath = ".//*[@id='center_column']//a[contains(@title, 'checkout')]";
 
     public AuthenticationPage clickCheckOut() {
-        clickElement(By.xpath(proceedToCheckOutBtnByXPath),5);
+        helperDriver.clickElement(By.xpath(proceedToCheckOutBtnByXPath),5);
         return new AuthenticationPage(driver);
     }
 }

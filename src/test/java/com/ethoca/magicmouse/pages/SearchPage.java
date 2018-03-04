@@ -8,31 +8,31 @@ import org.openqa.selenium.interactions.Actions;
 
 public class SearchPage extends PageObject{
 
-    public SearchPage(WebDriver driver, String itemName) {
+    public SearchPage(WebDriver driver) {
         super(driver);
 
     }
 
     //*********Page Variables*********
-    private String dynamicValue = "dynamic";
+    private static final String DYNAMIC_VALUE = "dynamic";
 
 
     //*********Locators*********
-    private String itemByXPath = "//*[@class='right-block']//a[@title='"+dynamicValue+"']";
-    private String addToCartBtnByCss = ".button.ajax_add_to_cart_button.btn.btn-default>span";
-    private String productElementByCss = ".product-container";
+    private String itemByXPath = "//*[@class='right-block']//a[@title='"+ DYNAMIC_VALUE +"']";
+    private static final String ADD_TO_CART_BTN_BY_CSS = ".button.ajax_add_to_cart_button.btn.btn-default>span";
+    private static final String PRODUCT_ELEMENT_BY_CSS = ".product-container";
 
 
     public ShoppingDetailsPage addToCart() {
-        WebElement productElement = driverHelper.findElementBy(By.cssSelector(productElementByCss),5);
+        WebElement productElement = driverHelper.findElementBy(By.cssSelector(PRODUCT_ELEMENT_BY_CSS),5);
         new Actions(driver).moveToElement(productElement).perform();
-        WebElement addToCartBtn = productElement.findElement(By.cssSelector(addToCartBtnByCss));
+        WebElement addToCartBtn = productElement.findElement(By.cssSelector(ADD_TO_CART_BTN_BY_CSS));
         addToCartBtn.click();
         return new ShoppingDetailsPage(driver);
     }
 
      public boolean isItemFound(String itemName) {
-         driverHelper.findElementBy(By.xpath(itemByXPath.replaceFirst(dynamicValue,itemName)), 5);
+         driverHelper.findElementBy(By.xpath(itemByXPath.replaceFirst(DYNAMIC_VALUE,itemName)), 5);
          return true;
     }
 }

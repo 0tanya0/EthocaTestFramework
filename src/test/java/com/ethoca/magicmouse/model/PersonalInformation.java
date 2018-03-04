@@ -2,10 +2,10 @@ package com.ethoca.magicmouse.model;
 
 public class PersonalInformation {
 
-    public String getFirstname() { return firstname;  }
+    public String getFirstName() { return firstName;  }
 
-    public String getLastname() {
-        return lastname;
+    public String getLastName() {
+        return lastName;
     }
 
     public String getPassword() {
@@ -16,14 +16,14 @@ public class PersonalInformation {
         return phoneNumber;
     }
 
-    private final String firstname;
-    private final String lastname;
+    private final String firstName;
+    private final String lastName;
     private final String password;
     private final String phoneNumber;
 
     public PersonalInformation(String firstname, String lastname, String password, String phoneNumber) {
-        this.firstname = firstname;
-        this.lastname = lastname;
+        this.firstName = firstname;
+        this.lastName = lastname;
         this.password = password;
         this.phoneNumber = phoneNumber;
     }

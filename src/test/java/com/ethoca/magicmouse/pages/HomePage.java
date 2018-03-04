@@ -13,19 +13,15 @@ public class HomePage extends PageObject{
         super(driver);
     }
 
-    //*********Page Variables*********
-    String baseURL = "http://automationpractice.com";
-
-
     //*********Locators*********
-    private String searchFieldById = "search_query_top";
-    private String searchBtnByName = "submit_search";
+    private static final String SEARCH_FIELD_BY_ID = "search_query_top";
+    private static final String SEARCH_BTN_BY_NAME = "submit_search";
 
     public SearchPage searchItem(String itemName) {
 
-        driverHelper.inputText(By.id(searchFieldById),itemName);
-        driverHelper.clickElement(By.name(searchBtnByName),5);
-        return new SearchPage(driver, itemName);
+        driverHelper.inputText(By.id(SEARCH_FIELD_BY_ID),itemName);
+        driverHelper.clickElement(By.name(SEARCH_BTN_BY_NAME),5);
+        return new SearchPage(driver);
     }
 
 

@@ -10,10 +10,10 @@ public class BankWirePaymentPage extends PageObject {
     }
 
     //*********Locators*********
-    private String confirmOrderBtnByXpath = ".//*[@id='cart_navigation']/button";
+    private static final String CONFIRM_ORDER_BTN_BY_XPATH = ".//*[@id='cart_navigation']/button";
 
     public OrderConfirmationPage clickConfirmOrder() {
-        driverHelper.clickElement(By.xpath(confirmOrderBtnByXpath),5);
+        driverHelper.clickElement(By.xpath(CONFIRM_ORDER_BTN_BY_XPATH),5);
 
         return new OrderConfirmationPage(driver);
     }

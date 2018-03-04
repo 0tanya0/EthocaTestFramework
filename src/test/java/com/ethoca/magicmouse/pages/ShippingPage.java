@@ -10,16 +10,16 @@ public class ShippingPage extends PageObject {
     }
 
     //*********Locators*********
-    private String proceedToCheckOutBtnByName = "processCarrier";
-    private String agreeTermsCheckBoxById = "cgv";
+    private static final String PROCEED_TO_CHECK_OUT_BTN_BY_NAME = "processCarrier";
+    private static final String AGREE_TERMS_CHECK_BOX_BY_ID = "cgv";
 
     public PaymentPage clickCheckOut() {
-        driverHelper.clickElement(By.name(proceedToCheckOutBtnByName),2);
+        driverHelper.clickElement(By.name(PROCEED_TO_CHECK_OUT_BTN_BY_NAME),2);
         return new PaymentPage(driver);
     }
 
     public ShippingPage checkAgreeTerms() {
-        driverHelper.selectCheckbox(By.id(agreeTermsCheckBoxById));
+        driverHelper.selectCheckbox(By.id(AGREE_TERMS_CHECK_BOX_BY_ID));
         return this;
     }
 }

@@ -9,22 +9,18 @@ public class AuthenticationPage extends PageObject {
         super(driver);
     }
 
-    //*********Page Variables*********
-    //String baseURL = "http://automationpractice.com";
-
-
     //*********Locators*********
-    private static final String emailFieldById = "email_create";
-    private static final String submitCreateBtnById = "SubmitCreate";
+    private static final String EMAIL_FIELD_BY_ID = "email_create";
+    private static final String SUBMIT_CREATE_BTN_BY_ID = "SubmitCreate";
 
 
     public AuthenticationPage inputEmail(String email) {
-        driverHelper.inputText(By.id(emailFieldById),email);
+        driverHelper.inputText(By.id(EMAIL_FIELD_BY_ID),email);
         return this;
     }
 
     public CreateAccountPage clickCreateAccount() {
-        driverHelper.clickElement(By.id(submitCreateBtnById),2);
+        driverHelper.clickElement(By.id(SUBMIT_CREATE_BTN_BY_ID),2);
         return new CreateAccountPage(driver);
     }
 }

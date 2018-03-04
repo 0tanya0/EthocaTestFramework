@@ -1,9 +1,16 @@
 package com.ethoca.base;
 
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.BrowserType;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -30,9 +37,13 @@ public abstract class BaseTest {
         }
         //Check if parameter passed as 'Edge'
         else if(browser.equalsIgnoreCase("Edge")){
-            //set path to Edge.exe
-            System.setProperty("webdriver.edge.driver",".\\MicrosoftWebDriver.exe");
-            //create Edge instance
+            System.setProperty("webdriver.edge.driver", "C:\\Tools\\MicrosoftWebDriver.exe");
+            DesiredCapabilities capabilities = DesiredCapabilities.edge();
+            capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+            capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "normal");
+            capabilities.setCapability("ignoreZoomSetting", true);
+            capabilities.setPlatform(Platform.WIN10);
+            capabilities.setBrowserName(BrowserType.EDGE);
             driver = new EdgeDriver();
         }
         else{
@@ -55,5 +66,9 @@ public abstract class BaseTest {
     @AfterMethod
     public void tearDown() {
         driver.close();
+    }
+
+    protected void logStep(String message) {
+        Reporter.log(message);
     }
 }

@@ -9,15 +9,15 @@ public class OrderConfirmationPage extends PageObject {
         super(driver);
     }
 
-    private String orderStatusByXPath= ".//*[@class='cheque-indent']/*";
-    private String orderConfirmationPageByClassName= "navigation_page";
+    private static final String ORDER_STATUS_BY_X_PATH = ".//*[@class='cheque-indent']/*";
+    private static final String ORDER_CONFIRMATION_PAGE_BY_CLASS_NAME = "navigation_page";
 
     public String getStatusOfOrder() {
-        return driverHelper.findElementBy(By.xpath(orderStatusByXPath),2).getText();
+        return driverHelper.findElementBy(By.xpath(ORDER_STATUS_BY_X_PATH),2).getText();
     }
 
     public String getPageName() {
-        return driverHelper.findElementToBePresenceBy(By.className(orderConfirmationPageByClassName),2).getText();
+        return driverHelper.findElementToBePresentBy(By.className(ORDER_CONFIRMATION_PAGE_BY_CLASS_NAME),2).getText();
     }
 
 }

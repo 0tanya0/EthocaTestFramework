@@ -9,17 +9,13 @@ public class ShoppingDetailsPage extends PageObject{
         super(driver);
     }
 
-    //*********Page Variables*********
-    //private String dynamicValue = "dynamic";
-
-
     //*********Locators*********
-    private String proceedToCheckOutBtnByXPath = ".//*[@id='layer_cart']//a[contains(@title, 'checkout')]";
+    private static final String PROCEED_TO_CHECK_OUT_BTN_BY_X_PATH = ".//*[@id='layer_cart']//a[contains(@title, 'checkout')]";
 
 
 
     public ShoppingCartPage clickCheckOut() {
-        driverHelper.clickElement(By.xpath(proceedToCheckOutBtnByXPath),5);
+        driverHelper.clickElement(By.xpath(PROCEED_TO_CHECK_OUT_BTN_BY_X_PATH),5);
         return new ShoppingCartPage(driver);
     }
 

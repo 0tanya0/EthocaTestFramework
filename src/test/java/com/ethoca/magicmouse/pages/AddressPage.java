@@ -10,16 +10,16 @@ public class AddressPage extends PageObject {
     }
 
     //*********Locators*********
-    private String proceedToCheckOutBtnByName = "processAddress";
-    private String accountValueByXPtah= ".//*[@class='account']/span";
+    private static final String PROCEED_TO_CHECK_OUT_BTN_BY_NAME = "processAddress";
+    private static final String ACCOUNT_VALUE_BY_X_PTAH = ".//*[@class='account']/span";
 
 
     public ShippingPage clickCheckOut() {
-        driverHelper.clickElement(By.name(proceedToCheckOutBtnByName),5);
+        driverHelper.clickElement(By.name(PROCEED_TO_CHECK_OUT_BTN_BY_NAME),5);
         return new ShippingPage(driver);
     }
 
     public String getAccountName() {
-        return driverHelper.findElementBy(By.xpath(accountValueByXPtah),2).getText();
+        return driverHelper.findElementBy(By.xpath(ACCOUNT_VALUE_BY_X_PTAH),2).getText();
     }
 }

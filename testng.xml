@@ -4,10 +4,10 @@
       <listener class-name="org.uncommons.reportng.HTMLReporter"/>
       <listener class-name="org.uncommons.reportng.JUnitXMLReporter"/>
   </listeners>
-  <test name="ChromeTest"   >
-      <parameter name="browser" value="Chrome" />
-    <packages>
-      <package name="com.ethoca.magicmouse.test" />
+    <test name="ChromeTest"   >
+        <parameter name="browser" value="chrome" />
+        <packages>
+            <package name="com.ethoca.magicmouse.test" />
         </packages>
     </test>
  </suite>

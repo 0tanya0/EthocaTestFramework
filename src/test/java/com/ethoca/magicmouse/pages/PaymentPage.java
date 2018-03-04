@@ -10,13 +10,13 @@ public class PaymentPage extends PageObject {
     }
 
     //*********Page Variables*********
-    private String dynamicValue = "dynamic";
+    private static final String DYNAMIC_VALUE = "dynamic";
 
     //*********Locators*********
-    private String bankWireBtnByXPath = ".//*[@id='HOOK_PAYMENT']//a[contains(@title, '"+dynamicValue+"')]";
+    private String bankWireBtnByXPath = ".//*[@id='HOOK_PAYMENT']//a[contains(@title, '"+ DYNAMIC_VALUE +"')]";
 
     public BankWirePaymentPage selectPaymentMethod(String paymentMethod) {
-        driverHelper.clickElement(By.xpath(bankWireBtnByXPath.replaceFirst(dynamicValue,paymentMethod)),5);
+        driverHelper.clickElement(By.xpath(bankWireBtnByXPath.replaceFirst(DYNAMIC_VALUE,paymentMethod)),5);
         return new BankWirePaymentPage(driver);
     }
 

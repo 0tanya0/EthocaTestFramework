@@ -19,7 +19,7 @@ public class WebDriverHelper {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     };
 
-    public WebElement findElementToBePresenceBy(By locator, int timeSec){
+    public WebElement findElementToBePresentBy(By locator, int timeSec){
         WebDriverWait wait = new WebDriverWait(driver, timeSec);
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     };
@@ -46,4 +46,5 @@ public class WebDriverHelper {
             driver.findElement(locator).click();
         }
     }
+
 }

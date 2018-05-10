@@ -1,6 +1,6 @@
-package com.ethoca.magicmouse.pages;
+package com.automationpractice.pages;
 
-import com.ethoca.base.PageObject;
+import com.automationpractice.base.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -32,7 +32,12 @@ public class SearchPage extends PageObject{
     }
 
      public boolean isItemFound(String itemName) {
-         driverHelper.findElementBy(By.xpath(itemByXPath.replaceFirst(DYNAMIC_VALUE,itemName)), 5);
-         return true;
+         try {
+             driverHelper.findElementBy(By.xpath(itemByXPath.replaceFirst(DYNAMIC_VALUE,itemName)), 5);
+             return true;
+         }
+         catch (Exception e){
+             return false;
+         }
     }
 }

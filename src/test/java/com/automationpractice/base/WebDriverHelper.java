@@ -1,4 +1,4 @@
-package com.ethoca.base;
+package com.automationpractice.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

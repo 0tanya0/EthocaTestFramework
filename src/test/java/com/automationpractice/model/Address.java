@@ -1,4 +1,4 @@
-package com.ethoca.magicmouse.model;
+package com.automationpractice.model;
 
 public class Address {
 

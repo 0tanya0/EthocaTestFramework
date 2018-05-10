@@ -1,4 +1,4 @@
-package com.ethoca.base;
+package com.automationpractice.base;
 
 
 public class StringUtils {

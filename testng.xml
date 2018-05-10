@@ -7,7 +7,6 @@
     <test name="ChromeTest"   >
         <parameter name="browser" value="chrome" />
         <packages>
-            <package name="com.ethoca.magicmouse.test" />
         </packages>
     </test>
  </suite>

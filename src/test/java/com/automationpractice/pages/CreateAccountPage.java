@@ -1,8 +1,8 @@
-package com.ethoca.magicmouse.pages;
+package com.automationpractice.pages;
 
-import com.ethoca.base.PageObject;
-import com.ethoca.magicmouse.model.Address;
-import com.ethoca.magicmouse.model.PersonalInformation;
+import com.automationpractice.base.PageObject;
+import com.automationpractice.model.Address;
+import com.automationpractice.model.PersonalInformation;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

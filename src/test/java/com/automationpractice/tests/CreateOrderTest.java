@@ -2,13 +2,16 @@ package com.automationpractice.tests;
 
 
 import com.automationpractice.base.BaseTest;
+import com.automationpractice.base.DataProviderJson;
 import com.automationpractice.base.StringUtils;
 import com.automationpractice.helpers.AccountHelper;
 import com.automationpractice.helpers.AddToCartHelper;
+import com.automationpractice.helpers.PaymentProcessHelper;
 import com.automationpractice.model.Address;
 import com.automationpractice.model.PersonalInformation;
 import com.automationpractice.pages.*;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -28,44 +31,28 @@ STEP 10: Click on "I confirm my order"
 public class CreateOrderTest extends BaseTest {
     @Override
     protected void setup(WebDriver driver) {
-        driver.get("http://automationpractice.com");
+
     }
 
-    @Override
-    protected void test(WebDriver driver) {
-
-        logStep("STEP 1: Go to http://automationpractice.com. ");
-        HomePage homePage = new HomePage(driver);
-
-        logStep("STEP 2: Search item Blouse. Click \"Add to cart\" for Blouse item. " +
+    @Test(dataProvider = "getUserData", dataProviderClass = DataProviderJson.class)
+    public void test(PersonalInformation personalInformation) {
+        logStep("STEP 1: Search item Blouse. Click \"Add to cart\" for Blouse item. " +
                 "Click on “Proceed to checkout” for Blouse item.");
         String itemName = "Blouse";
         String quantity = "1";
-
+        HomePage homePage = new HomePage(driver);
         ShoppingCartPage shoppingCartPage = AddToCartHelper.addItemWithSearch(homePage,itemName,quantity);
 
-        logStep("STEP 3: Click on “Proceed to checkout” for Blouse item.");
+        logStep("STEP 2: Click on “Proceed to checkout” for Blouse item.");
         AuthenticationPage authenticationPage = shoppingCartPage.clickCheckOut();
 
-        logStep("STEP 4: Input random email and click \"Create an Account\"");
-        PersonalInformation personalInformation = new PersonalInformation("Vasya", "Pupkin",
-                "Tanya123!", "416993996");
-        Address address = new Address("30 Test", "Toronto", "Colorado", "11223", "United States");
-        ShippingPage shippingPage = AccountHelper.createUser(authenticationPage,personalInformation,address);
+        logStep("STEP 3: Input random email and click \"Create an Account\"");
+        ShippingPage shippingPage = AccountHelper.createUser(authenticationPage,personalInformation);
 
-        logStep("STEP 5: Check Agree with Terms and click on “Proceed to checkout”.");
-        PaymentPage paymentPage = shippingPage.checkAgreeTerms().clickCheckOut();
-
-        logStep("STEP 6: Select payment method as Bank wire.");
-        BankWirePaymentPage bankWirePaymentPage = paymentPage.selectPaymentMethod("wire");
-
-        logStep("STEP 7: Click on \"I confirm my order\".");
-        OrderConfirmationPage orderConfirmationPage = bankWirePaymentPage.clickConfirmOrder();
-        assertThat(orderConfirmationPage.getPageName())
-                .isEqualTo("Order confirmation");
-        assertThat(orderConfirmationPage.getStatusOfOrder())
-                .isEqualTo("Your order on My Store is complete.");
-
+        logStep("STEP 4: Check Agree with Terms and click on “Proceed to checkout”." +
+                "Select payment method as Bank wire");
+        String paymentMethod = "wire";
+        OrderConfirmationPage orderConfirmationPage = PaymentProcessHelper.addPayment(shippingPage,paymentMethod);
     }
 
 

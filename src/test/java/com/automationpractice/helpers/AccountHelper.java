@@ -15,14 +15,13 @@ import static org.assertj.core.api.Assertions.assertThat;
  */
 public class AccountHelper {
     public static ShippingPage createUser(AuthenticationPage authenticationPage,
-                                          PersonalInformation personalInformation,
-                                          Address address){
+                                          PersonalInformation personalInformation){
         String randomEmail = StringUtils.generateRandomEmail();
         CreateAccountPage createAccountPage = authenticationPage.inputEmail(randomEmail)
                 .clickCreateAccount();
 
         AddressPage addressPage = createAccountPage.inputPersonalInformation(personalInformation)
-                .inputAddress(address)
+                .inputAddress(personalInformation.getAddress())
                 .clickRegister();
 
         ShippingPage shippingPage = addressPage.clickCheckOut();

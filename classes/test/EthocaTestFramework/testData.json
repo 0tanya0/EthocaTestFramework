@@ -1,0 +1,15 @@
+[
+    {
+      "firstName": "Vasya",
+      "lastName": "Pupkin",
+      "password": "Tanya123!",
+      "phoneNumber": "4167773232",
+      "address": {
+        "addressLine": "30 Test",
+        "city": "Toronto",
+        "state": "Colorado",
+        "code": "11223",
+        "country": "United States"
+      }
+    }
+]

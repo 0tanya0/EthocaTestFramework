@@ -6,7 +6,9 @@
   </listeners>
     <test name="ChromeTest"   >
         <parameter name="browser" value="chrome" />
+        <parameter name="server" value="http://automationpractice.com" />
         <packages>
+            <package name="com.automationpractice.tests" />
         </packages>
     </test>
  </suite>

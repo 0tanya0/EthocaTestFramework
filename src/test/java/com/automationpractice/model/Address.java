@@ -2,11 +2,15 @@ package com.automationpractice.model;
 
 public class Address {
 
-    private final String addressLine;
-    private final String city;
-    private final String state;
-    private final String code;
-    private final String country;
+    private String addressLine;
+    private String city;
+    private String state;
+    private String code;
+    private String country;
+
+    public Address() {
+
+    }
 
     public Address(String addressLine, String city, String state, String code, String country) {
         this.addressLine = addressLine;
@@ -15,9 +19,7 @@ public class Address {
         this.code = code;
         this.country = country;
     }
-    public String getAddressLine() {
-        return addressLine;
-    }
+    public String getAddressLine() { return addressLine; }
 
     public String getCity() {
         return city;
@@ -34,4 +36,6 @@ public class Address {
     public String getCode() {
         return code;
     }
+
+
 }

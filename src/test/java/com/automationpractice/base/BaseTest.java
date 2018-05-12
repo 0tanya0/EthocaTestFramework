@@ -17,13 +17,14 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
-    private WebDriver driver;
+    protected WebDriver driver;
 
     protected abstract void setup(WebDriver driver);
 
-    @Parameters("browser")
+    @Parameters ({"browser","server"})
     @BeforeMethod
-    public void setUp(String browser) throws Exception {
+    public void setUp(String browser, String server) throws Exception {
+//        String server = "http://automationpractice.com";
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("firefox")){
             driver = new FirefoxDriver();
@@ -49,16 +50,10 @@ public abstract class BaseTest {
             throw new Exception("Browser is not correct");
         }
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        setup(driver);
+        driver.get(server);
+//        setup(driver);
         //Maximize Window
         driver.manage().window().maximize();
-    }
-
-    protected abstract void test(WebDriver driver);
-
-    @Test
-    public void test() {
-        test(driver);
     }
 
     @AfterMethod

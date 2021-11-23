@@ -1,19 +1,14 @@
 package com.automationpractice.tests;
 
-
 import com.automationpractice.base.BaseTest;
 import com.automationpractice.base.DataProviderJson;
-import com.automationpractice.base.StringUtils;
 import com.automationpractice.helpers.AccountHelper;
 import com.automationpractice.helpers.AddToCartHelper;
 import com.automationpractice.helpers.PaymentProcessHelper;
-import com.automationpractice.model.Address;
 import com.automationpractice.model.PersonalInformation;
 import com.automationpractice.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /*
 STEP 1: Go to http://automationpractice.com. Search item "blouse".
@@ -31,7 +26,6 @@ STEP 10: Click on "I confirm my order"
 public class CreateOrderTest extends BaseTest {
     @Override
     protected void setup(WebDriver driver) {
-
     }
 
     @Test(dataProvider = "getUserData", dataProviderClass = DataProviderJson.class)
@@ -54,6 +48,4 @@ public class CreateOrderTest extends BaseTest {
         String paymentMethod = "wire";
         OrderConfirmationPage orderConfirmationPage = PaymentProcessHelper.addPayment(shippingPage,paymentMethod);
     }
-
-
 }

@@ -1,5 +1,6 @@
 package com.automationpractice.base;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+
 import java.util.concurrent.TimeUnit;
 
 public abstract class BaseTest {
@@ -27,22 +29,18 @@ public abstract class BaseTest {
 //        String server = "http://automationpractice.com";
         //Check if parameter passed from TestNG is 'firefox'
         if(browser.equalsIgnoreCase("firefox")){
+            WebDriverManager.firefoxdriver().setup();
             driver = new FirefoxDriver();
         }
         //Check if parameter passed as 'chrome'
         else if(browser.equalsIgnoreCase("chrome")){
             //create chrome instance
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }
         //Check if parameter passed as 'Edge'
         else if(browser.equalsIgnoreCase("Edge")){
-            System.setProperty("webdriver.edge.driver", "C:\\Tools\\MicrosoftWebDriver.exe");
-            DesiredCapabilities capabilities = DesiredCapabilities.edge();
-            capabilities.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
-            capabilities.setCapability(CapabilityType.PAGE_LOAD_STRATEGY, "normal");
-            capabilities.setCapability("ignoreZoomSetting", true);
-            capabilities.setPlatform(Platform.WIN10);
-            capabilities.setBrowserName(BrowserType.EDGE);
+            WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
         }
         else{
